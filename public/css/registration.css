@@ -1,0 +1,78 @@
+body {
+    background: url("../images/background.png") no-repeat;
+    background-size: 100%;
+}
+
+hr {
+    background-color: black;
+    height: 1px;
+    margin-bottom: 45px;
+}
+
+.starter-template {
+    padding: 90px 350px;
+    text-align: center;
+}
+
+.groups {
+    margin-bottom: 20px;
+}
+
+.input-group-addon {
+    background-color: rgba(5, 6, 86, 0.18);
+}
+
+.span_custom {
+    display: table-cell;
+    vertical-align: middle;
+    padding-right: 25px;
+}
+
+.form-control {
+    height: 0%;
+}
+
+.buttons_reg {
+    margin-top: 15px;
+    position: relative;
+    display: inline-block;
+}
+
+.custom-buttons {
+    margin-right: 50px;
+}
+
+.back {
+    position: absolute;
+    margin-left: 25px;
+    margin-top: 25px;
+}
+
+.span-names {
+    width: 132px;
+}
+
+.div-names {
+    width: 435px;
+}
+
+#reg_btn {
+    margin-right: 70px;
+}
+
+#alert {
+    text-align: center;
+    margin-top: 350px;
+}
+
+#users {
+    margin-bottom: 40px;
+}
+
+#invites-page {
+    margin-top: 100px;
+}
+
+#table {
+    text-align: center;
+}
