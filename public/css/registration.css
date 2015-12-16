@@ -76,3 +76,19 @@ hr {
 #table {
     text-align: center;
 }
+
+#registration:hover {
+    background-color: #66EB68;
+}
+
+#clear:hover {
+    background-color: #FF6767;
+}
+
+#users:hover {
+    background-color: #5AC5F9;
+}
+
+#invites:hover {
+    background-color: #F9DF5C;
+}

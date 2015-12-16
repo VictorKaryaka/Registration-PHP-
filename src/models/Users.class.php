@@ -1,14 +1,12 @@
 <?php
 
-class Users
+class Users extends DatabaseConnector
 {
     private $login;
     private $password;
     private $phone;
     private $id_city;
     private $invite;
-
-    private $pdo;
 
     /**
      * Users constructor.
@@ -19,9 +17,6 @@ class Users
      */
     public function __construct($login, $password, $phone, $city, $invite)
     {
-        $connector = new DatabaseConnector();
-        $this->pdo = $connector->getConnection();
-
         $this->login = $login;
         $this->password = $password;
         $this->phone = $phone;
@@ -38,7 +33,7 @@ class Users
             $invite = new Invites();
             if ($invite->inviteStatus($this->invite)) {
                 $sql = 'INSERT INTO USERS (login, password, phone, id_city, invite) VALUES (?, ?, ?, ?, ?)';
-                $statement = $this->pdo->prepare($sql);
+                $statement = $this->connection->prepare($sql);
                 $statement->execute(array($this->login, md5($this->password), $this->phone, $this->id_city, $this->invite));
 
                 $invite->statusUpdate($this->invite);
@@ -61,7 +56,7 @@ class Users
     public function getAll()
     {
         $sql = 'SELECT login, id_city, invite FROM USERS;';
-        $state = $this->pdo->query($sql);
+        $state = $this->connection->query($sql);
         $rows = $state->fetchAll(PDO::FETCH_ASSOC);
         return $rows;
     }
@@ -74,8 +69,9 @@ class Users
      */
     private function getIdCity($city)
     {
-        $sql = 'SELECT id_city FROM CITIES WHERE city_name = ' . "'$city'" . ';';
-        $statement = $this->pdo->query($sql);
+        $sql = 'SELECT id_city FROM CITIES WHERE city_name = ?;';
+        $statement = $this->connection->prepare($sql);
+        $statement->execute(array($city));
         $a = $statement->fetch(PDO::FETCH_COLUMN);
         return $a;
     }
@@ -88,8 +84,9 @@ class Users
      */
     private function isHasLogin($login)
     {
-        $sql = 'SELECT login FROM USERS WHERE login = ' . "'$login'" . ';';
-        $statement = $this->pdo->query($sql);
+        $sql = 'SELECT login FROM USERS WHERE login = ?;';
+        $statement = $this->connection->prepare($sql);
+        $statement->execute(array($login));
         $row = $statement->fetch(PDO::FETCH_LAZY);
 
         return (is_bool($row)) ? false : true;

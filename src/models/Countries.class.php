@@ -1,18 +1,7 @@
 <?php
 
-class Countries
+class Countries extends DatabaseConnector
 {
-    private $pdo;
-
-    /**
-     * Countries constructor.
-     */
-    public function __construct()
-    {
-        $connector = new DatabaseConnector('config.ini');
-        $this->pdo = $connector->getConnection();
-    }
-
     /**
      * @return array
      *
@@ -21,7 +10,7 @@ class Countries
     public function getAll()
     {
         $sql = 'SELECT country_name FROM COUNTRIES;';
-        $state = $this->pdo->query($sql);
+        $state = $this->connection->query($sql);
         $rows = $state->fetchAll(PDO::FETCH_ASSOC);
         return $rows;
     }

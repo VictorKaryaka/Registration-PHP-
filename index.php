@@ -1,8 +1,6 @@
 <?php
-    include_once 'src/models/Cities.class.php';
-    include_once 'src/models/Countries.class.php';
-    include_once 'src/util/DatabaseConnector.class.php';
-
+    include_once('autoloader.php');
+    spl_autoload_register('autoload');
     $cities = new Cities();
     $countries = new Countries();
 ?>
@@ -15,12 +13,6 @@
     <link rel="icon" type="public/image/gif" href="./images/ajb.gif">
     <link href="public/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="public/css/registration.css" rel="stylesheet">
-    <script src="public/js/jquery-2.1.4.min.js" rel="script"></script>
-    <script src="public/js/actions.js" rel="script"></script>
-    <script src="public/js/validator.js" rel="script"></script>
-    <script src="public/js/style.js" rel="script"></script>
-    <script src="public/js/notify.min.js" rel="script"></script>
-    <script src="public/bootstrap/js/bootstrap.min.js" rel="script"></script>
 </head>
 <body>
 <div class="container">
@@ -105,4 +97,9 @@
     </div>
 </div>
 </body>
+<script src="public/js/jquery-2.1.4.min.js" rel="script"></script>
+<script src="public/js/actions.js" rel="script"></script>
+<script src="public/js/validator.js" rel="script"></script>
+<script src="public/js/notify.min.js" rel="script"></script>
+<script src="public/bootstrap/js/bootstrap.min.js" rel="script"></script>
 </html>

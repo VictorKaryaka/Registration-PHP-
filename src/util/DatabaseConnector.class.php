@@ -2,15 +2,7 @@
 
 class DatabaseConnector
 {
-    private $connection;
-
-    /**
-     * @return PDO
-     */
-    public function getConnection()
-    {
-        return $this->connection;
-    }
+    protected $connection;
 
     /**
      * DatabaseConnector constructor.

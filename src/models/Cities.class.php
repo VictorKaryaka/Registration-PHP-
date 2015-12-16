@@ -1,18 +1,7 @@
 <?php
 
-class Cities
+class Cities extends DatabaseConnector
 {
-    private $pdo;
-
-    /**
-     * Cities constructor.
-     */
-    public function __construct()
-    {
-        $connector = new DatabaseConnector('config.ini');
-        $this->pdo = $connector->getConnection();
-    }
-
     /**
      * @return array
      *
@@ -20,7 +9,7 @@ class Cities
      */
     public function getCities(){
         $sql = 'SELECT city_name FROM CITIES ORDER BY id_country; ';
-        $state = $this->pdo->query($sql);
+        $state = $this->connection->query($sql);
         $rows = $state->fetchAll(PDO::FETCH_ASSOC);
         return $rows;
     }

@@ -1,9 +1,5 @@
 <?php
 
-include_once '../util/Validator.class.php';
-include_once '../models/Users.class.php';
-include_once '../models/Invites.class.php';
-
 class Registration
 {
     public static function run()
